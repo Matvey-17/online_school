@@ -1,0 +1,17 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'school/css/login.css' %}">
+</head>
+<body>
+<div class="registration-cssave">
+    {% block message %} {% endblock %}
+    {% block error %} {% endblock %}
+    {% block form %} {% endblock %}
+</div>
+</body>
+</html>

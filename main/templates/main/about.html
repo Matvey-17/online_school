@@ -1,0 +1,78 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'school/css/about_us.css' %}">
+{% endblock %}
+
+
+{% block section %}
+<section class="about">
+    <p style="font-weight: bold; font-size: 20px">NSTU-School - это онлайн-платформа для обучения высшей математики.</p>
+    <div class="about-info">
+        <div class="about-img">
+            <p>
+                <img src="{% static 'school/img/about-1.jpg' %}" alt="UMSchool">
+                <img src="{% static 'school/img/about-2.jpg' %}" alt="UMSchool">
+                <img src="{% static 'school/img/about-3.jpg' %}" alt="UMSchool">
+            </p>
+        </div>
+        <div>
+            <p>NSTU-School предлагает качественную и доступную помощь в обучении по самым необходимым предметам
+                высшей математики,
+                таким как Математический анализ и Линейная алгебра. Наши курсы подходят как
+                для
+                начинающих, так и для продвинутых студентов, которые хотят улучшить свои навыки и расширить свои
+                возможности. Наши преподаватели - студенты старших курсов, которые готовы поделиться
+                своими знаниями и помочь вам достичь своих целей.</p>
+        </div>
+    </div>
+</section>
+<section class="team">
+    <h1>Наша команда</h1>
+    <div class="team-cards">
+        <div class="card">
+            <div class="card-img">
+                <img src="{% static 'school/img/user-1.png' %}" height="212" width="212" alt="User 1">
+            </div>
+            <div class="card-info">
+                <h2 class="card-name">Матвей Варламов</h2>
+                <p class="card-role">Основатель и CEO</p>
+                <p class="card-email">matvey_1771@icloud.com</p>
+                <p>
+                    <a class="button" href="mailto:matvey_1771@icloud.com"><button>Связаться</button></a>
+                </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img">
+                <img src="user2.jpg" alt="User 2">
+            </div>
+            <div class="card-info">
+                <h2 class="card-name">ФИ</h2>
+                <p class="card-role">Куратор преподавателей</p>
+                <p class="card-email">#@example.com</p>
+                <p>
+                    <a class="button" href="#"><button>Связаться</button></a>
+                </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img">
+                <img src="user3.jpg" alt="User 3">
+            </div>
+            <div class="card-info">
+                <h2 class="card-name">ФИ</h2>
+                <p class="card-role">Менеджер по развитию</p>
+                <p class="card-email">#@example.com</p>
+                <p>
+                    <a class="button" href="#"><button>Связаться</button></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+

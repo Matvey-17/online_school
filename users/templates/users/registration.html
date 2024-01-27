@@ -1,0 +1,38 @@
+{% extends 'users/base.html' %}
+
+
+{% block form %}
+<form action="{% url 'auth:registration' %}" method="post">
+    {% csrf_token %}
+    <h1 class="text-center">Регистрация</h1>
+    <div class="form-group">
+        {{ form.first_name }}
+        {{ form.last_name }}
+    </div>
+    <div class="form-group">
+        {{ form.username }}
+        {{ form.email }}
+    </div>
+    <div class="form-group">
+        {{ form.password1 }}
+        {{ form.password2 }}
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary btn-block create-account" type="submit">Регистрация</button>
+    </div>
+    <p>
+        Есть аккаунт?<a href="{% url 'auth:login' %}"> Авторизуйтесь</a>
+    </p>
+</form>
+{% endblock %}
+
+
+{% block error %}
+{% if form.errors %}
+<div class="error-block">
+    <p class="error-message">
+        <span class="error-span">{{ form.errors }}</span>
+    </p>
+</div>
+{% endif %}
+{% endblock %}

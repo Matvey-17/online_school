@@ -1,0 +1,164 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #ffffff;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+.header a {
+    text-decoration: none;
+    color: #333333;
+    font-weight: bold;
+}
+.header span {
+    vertical-align: 27px;
+}
+.logo {
+    width: 70px;
+    height: auto;
+}
+.nav {
+    display: flex;
+    list-style: none;
+}
+.nav li {
+    margin: 0 10px;
+}
+.nav a {
+    text-decoration: none;
+    color: #333333;
+    font-weight: bold;
+}
+.nav a:hover {
+    color: #32cd32;
+}
+.nav a:active {
+    color: red;
+}
+.nav .button {
+    background: #000000;
+    color: #fff;
+    padding: 0.6rem 2rem;
+    text-decoration: none;
+    border-radius: 4px;
+}
+.nav .button:hover {
+    background: #a0a0a0;
+    color: #fff;
+    padding: 0.6rem 2rem;
+    text-decoration: none;
+    border-radius: 4px;
+}
+.dropdown {
+  position: relative;
+  font-weight: bold;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  background-color: #f1f1f1;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 1200px;
+    height: 100%;
+    background: linear-gradient(-30deg, green, white, red);
+}
+.form h1 {
+    font-size: 30px;
+    color: #333333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.form label {
+    display: block;
+    font-size: 16px;
+    color: #333333;
+    margin-bottom: 10px;
+}
+.form input {
+    display: block;
+    width: 80%;
+    height: 30px;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    padding: 5px;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+.form button {
+    width: 40%;
+    height: 40px;
+    border: none;
+    border-radius: 4px;
+    background: #32cd32;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.form button:hover {
+    background: #228b22;
+}
+.form button:active {
+    background: #006400;
+}
+body {
+    background-color: #f0f0f0;
+}
+.message-container {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+.message-success {
+  background-color: #81ce81;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+}
+.message-close {
+  float: right;
+  cursor: pointer;
+  font-weight: bold;
+  text-indent: 7px;
+}
+.footer {
+    padding: 20px;
+    background-color: #333333;
+}
+.footer p {
+    color: #ffffff;
+    font-size: 16px;
+    text-align: center;
+}
+.readonly_input {
+    background-color: silver;
+}

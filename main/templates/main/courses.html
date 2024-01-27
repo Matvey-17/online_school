@@ -1,0 +1,34 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'school/css/courses.css' %}">
+{% endblock %}
+
+{% block main %}
+<div class="main">
+    <h1>Курсы</h1>
+    <div class="course">
+        <img src="{% static 'school/img/matanaliz_cours.jpg' %}" alt="Математический анализ">
+        <div>
+            <h2>Математический анализ</h2>
+            <p>- Все темы из экзамена</p>
+            <p>- Вебинары в формате записи</p>
+            <p>- Конспекты</p>
+            <button><a class="button" href="{% url 'courses:matanaliz' %}">Перейти</a></button>
+        </div>
+    </div>
+    <div class="course">
+        <img src="{% static 'school/img/linal.jpg' %}" alt="Линейная алгебра">
+        <div>
+            <h2>Линейная алгебра</h2>
+            <p>- Все темы из экзамена</p>
+            <p>- Вебинары в формате записи</p>
+            <p>- Конспекты</p>
+            <button><a class="button" href="#">Перейти</a></button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

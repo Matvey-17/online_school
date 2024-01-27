@@ -1,0 +1,46 @@
+{% extends 'users/base.html' %}
+
+
+{% block form %}
+<form action="{% url 'auth:login' %}" method="post">
+    {% csrf_token %}
+    <h1 class="text-center">Авторизация</h1>
+    <div class="form-group">
+        {{ form.username }}
+    </div>
+    <div class="form-group">
+        {{ form.password }}
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary btn-block create-account" type="submit">Вход в аккаунт</button>
+    </div>
+    <p>
+        Нет аккаунта?<a href="{% url 'auth:registration' %}"> Зарегистрируйтесь</a>
+    </p>
+</form>
+{% endblock %}
+
+
+{% block message %}
+<div class="message-container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="message-success">
+        {{ message }}
+        <span class="message-close" onclick="this.parentElement.style.display='none';">×</span>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}
+
+
+{% block error %}
+{% if form.errors %}
+<div class="error-block">
+    <p class="error-message">
+        <span class="error-span">{{ form.non_field_errors }}</span>
+    </p>
+</div>
+{% endif %}
+{% endblock %}

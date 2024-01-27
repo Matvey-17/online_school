@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'school/css/profile.css' %}">
+{% endblock %}
+
+
+{% block message %}
+<div class="message-container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="message-success">
+        {{ message }}
+        <span class="message-close" onclick="this.parentElement.style.display='none';">×</span>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}
+
+
+{% block form %}
+<form class="form" action="{% url 'auth:profile' %}" method="post">
+    {% csrf_token %}
+    <h1>Профиль</h1>
+    <label for="{{ form.first_name.id_for_label }}">Имя</label>
+    {{ form.first_name }}
+    <label for="{{ form.last_name.id_for_label }}">Фамилия</label>
+    {{ form.last_name }}
+    <label for="{{ form.username.id_for_label }}">Логин</label>
+    {{ form.username }}
+    <label for="{{ form.email.id_for_label }}">Email</label>
+    {{ form.email }}
+    <button type="submit">Сохранить</button>
+</form>
+{% endblock %}
+

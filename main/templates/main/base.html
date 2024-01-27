@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    {% block css %} {% endblock %}
+</head>
+<body>
+<div class="container">
+    {% block message %} {% endblock %}
+    <div class="header">
+        <a href="{% url 'main' %}">
+            <img src="{% static 'school/img/logo.png' %}" alt="NSTU-School" class="logo">
+            <span>NSTU-School</span>
+        </a>
+        <ul class="nav">
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'main' %}">Главная</a></li>
+            <li class="dropdown">Меню
+                <div class="dropdown-content">
+                    <a href="{% url 'auth:profile' %}">Профиль</a>
+                    <a href="{% url 'courses:index' %}">Курсы</a>
+                    <a href="{% url 'about' %}">О нас</a>
+                </div>
+            </li>
+            <li><a class="button" href="{% url 'auth:logout' %}">Выйти</a></li>
+            {% else %}
+            <li><a href="{% url 'main' %}">Главная</a></li>
+            <li><a class="button" href="{% url 'auth:login' %}">Войти</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    {% block banner %} {% endblock %}
+    {% block main %} {% endblock %}
+    {% block section %} {% endblock %}
+    {% block form %} {% endblock %}
+    <div class="footer">
+        <p>© 2024 NSTU-School. Все права защищены.</p>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+
