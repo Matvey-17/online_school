@@ -99,10 +99,10 @@
 }
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: white;
 }
 .footer {
-    padding: 20px;
+    padding: 10px;
     background-color: #333333;
 }
 .footer p {
@@ -111,7 +111,7 @@ body {
     text-align: center;
 }
 .containers {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
     background: linear-gradient(-30deg, green, white, red);
 }

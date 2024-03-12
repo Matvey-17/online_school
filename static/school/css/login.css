@@ -1,104 +1,59 @@
-html {
-  background: linear-gradient(-30deg, green, white, red);
-  background-blend-mode:overlay;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background-repeat:no-repeat;
-  background-size:cover;
-  height:100%;
+html, body {
+  height: 100%;
 }
+
 body {
-  background-color:transparent;
-  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
 }
-.registration-cssave{
-  padding:50px 0;
-  display:flex;
-  justify-content:center;
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .form-control {
   position: relative;
-}
-.registration-cssave form {
-  max-width:800px;
-  padding:50px 70px;
-  border-radius:10px;
-  box-shadow:4px 4px 15px rgba(0, 0, 0, 0.2);
-  background-color:#ffffff;
-}
-.registration-cssave form h1 {
-  font-weight:bold;
-  margin-bottom:30px;
-}
-.registration-cssave .item {
-  border-radius:10px;
-  margin-bottom:25px;
-  padding:10px 20px;
-}
-.registration-cssave .create-account {
-  border-radius:30px;
-  padding:10px 20px;
-  font-size:18px;
-  font-weight:bold;
-  background: #32cd32;
-  border:none;
-  color:white;
-  margin-top:20px;
-}
-.registration-cssave .create-account:hover {
-    background: #228b22;
-}
-.registration-cssave .create-account:active {
-    background: #006400;
-}
-@media (max-width: 576px) {
-  .registration-cssave form {
-    padding:50px 20px;
-  }
-}
-a {
-    text-decoration: none;
-    color: blue;
-}
-.message-container {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 1000;
-}
-.message-success {
-  background-color: #81ce81;
-  color: #fff;
+  box-sizing: border-box;
+  height: auto;
   padding: 10px;
-  border-radius: 5px;
-}
-.message-close {
-  float: right;
-  cursor: pointer;
-  font-weight: bold;
-  text-indent: 7px;
-}
-p {
-    font-weight: bold;
-}
-.error-block {
-  border: 2px solid red;
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: #FFCA86;
-  position: absolute;
-  top: -15px;
-  transform: translateY(-25px);
-  margin-top: -19px;
-  border-radius: 10px;
-  height: 80px;
-  overflow: auto;
-}
-.error-message {
-  color: red;
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-size: 16px;
 }
 
+.form-signin .form-control:focus {
+  z-index: 2;
+}
 
+.my-alert-danger {
+    position: fixed;
+    right: 10px;
+    top: 20px;
+    border-radius: 7px;
+    padding: 10px;
+    background-color: #FF0000;
+    z-index: 1000;
+    display: block;
+    max-height: 10%;
+    overflow-y: auto;
+    width: 30%;
+}
 
-
+.my-alert-success {
+    position: fixed;
+    right: 10px;
+    top: 20px;
+    border-radius: 7px;
+    padding: 10px;
+    background-color: #2ed22e;
+    z-index: 1000;
+    display: block;
+    max-height: 10%;
+    overflow-y: auto;
+    width: 30%;
+}

@@ -3,7 +3,7 @@ font-family: Arial, sans-serif;
 background-color: #f0f0f0;
 }
 .container {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
 }
 h1 {
@@ -104,7 +104,7 @@ h1 {
     color: #ffffff;
 }
 .footer {
-    padding: 20px;
+    padding: 10px;
     background-color: #333333;
 }
 .footer p {

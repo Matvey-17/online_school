@@ -1,46 +1,39 @@
 {% extends 'users/base.html' %}
 
-
 {% block form %}
-<form action="{% url 'auth:login' %}" method="post">
-    {% csrf_token %}
-    <h1 class="text-center">Авторизация</h1>
-    <div class="form-group">
-        {{ form.username }}
-    </div>
-    <div class="form-group">
-        {{ form.password }}
-    </div>
-    <div class="form-group">
-        <button class="btn btn-primary btn-block create-account" type="submit">Вход в аккаунт</button>
-    </div>
-    <p>
-        Нет аккаунта?<a href="{% url 'auth:registration' %}"> Зарегистрируйтесь</a>
-    </p>
-</form>
+<div class="card">
+  <div class="card-body">
+    <form action="{% url 'auth:login' %}" method="post" class="form-signin">
+        {% csrf_token %}
+        <h1 class="h3 mb-3 font-weight-normal text-center">Авторизация</h1>
+        <div class="form-group">
+            {{ form.username }}
+        </div>
+        <div class="form-group">
+            {{ form.password }}
+        </div>
+        <p class="text-left">
+            <a href="#" style="text-decoration: none;"> Забыли пароль?</a>
+        </p>
+        <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Вход в аккаунт</button>
+        </div>
+        <p class="text-center">
+            Нет аккаунта?<a href="{% url 'auth:registration' %}" style="text-decoration: none;"> Зарегистрироваться</a>
+        </p>
+    </form>
+  </div>
+</div>
 {% endblock %}
 
-
 {% block message %}
-<div class="message-container">
+<div class="container" id="message-container">
     {% if messages %}
     {% for message in messages %}
-    <div class="message-success">
+    <div class="my-alert-{{ message.tags }}" role="alert">
         {{ message }}
-        <span class="message-close" onclick="this.parentElement.style.display='none';">×</span>
     </div>
     {% endfor %}
     {% endif %}
 </div>
-{% endblock %}
-
-
-{% block error %}
-{% if form.errors %}
-<div class="error-block">
-    <p class="error-message">
-        <span class="error-span">{{ form.non_field_errors }}</span>
-    </p>
-</div>
-{% endif %}
 {% endblock %}

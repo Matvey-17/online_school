@@ -19,12 +19,15 @@
             <li><a href="{% url 'main' %}">Главная</a></li>
             <li class="dropdown">Меню
                 <div class="dropdown-content">
-                    <a href="{% url 'profile' %}">Профиль</a>
+                    <a href="{% url 'auth:profile' %}">Профиль</a>
                     <a href="{% url 'courses:index' %}">Курсы</a>
                     <a href="{% url 'about' %}">О нас</a>
+                    {% if user.is_staff or user.is_superuser %}
+                    <a href="{% url 'admin:index' %}">Админ</a>
+                    {% endif %}
                 </div>
             </li>
-            <li><a class="button" href="{% url 'logout' %}">Выйти</a></li>
+            <li><a class="button" href="{% url 'auth:logout' %}">Выйти</a></li>
             {% else %}
             <li><a href="{% url 'main' %}">Главная</a></li>
             <li><a class="button" href="{% url 'login:index' %}">Войти</a></li>

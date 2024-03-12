@@ -1,38 +1,40 @@
 {% extends 'users/base.html' %}
 
-
 {% block form %}
-<form action="{% url 'auth:registration' %}" method="post">
-    {% csrf_token %}
-    <h1 class="text-center">Регистрация</h1>
-    <div class="form-group">
-        {{ form.first_name }}
-        {{ form.last_name }}
-    </div>
-    <div class="form-group">
-        {{ form.username }}
-        {{ form.email }}
-    </div>
-    <div class="form-group">
-        {{ form.password1 }}
-        {{ form.password2 }}
-    </div>
-    <div class="form-group">
-        <button class="btn btn-primary btn-block create-account" type="submit">Регистрация</button>
-    </div>
-    <p>
-        Есть аккаунт?<a href="{% url 'auth:login' %}"> Авторизуйтесь</a>
-    </p>
-</form>
+<div class="card">
+  <div class="card-body">
+    <form action="{% url 'auth:registration' %}" method="post" class="form-signin">
+        {% csrf_token %}
+        <h1 class="h3 mb-3 font-weight-normal text-center">Регистрация</h1>
+        <div class="form-group">
+            {{ form.first_name }}
+            {{ form.last_name }}
+        </div>
+        <div class="form-group">
+            {{ form.username }}
+            {{ form.email }}
+        </div>
+        <div class="form-group">
+            {{ form.password1 }}
+            {{ form.password2 }}
+        </div>
+        <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Регистрация</button>
+        </div>
+        <p class="text-center">
+            Есть аккаунт?<a href="{% url 'auth:login' %}" style="text-decoration: none;"> Авторизуйтесь</a>
+        </p>
+    </form>
+  </div>
+</div>
 {% endblock %}
 
-
 {% block error %}
-{% if form.errors %}
-<div class="error-block">
-    <p class="error-message">
-        <span class="error-span">{{ form.errors }}</span>
-    </p>
+<div class="container" id="message-container">
+    {% if form.errors %}
+    <div class="my-alert-danger" role="alert">
+        {{ form.errors }}
+    </div>
+    {% endif %}
 </div>
-{% endif %}
 {% endblock %}

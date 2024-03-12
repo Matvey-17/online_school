@@ -1,39 +1,51 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
-
 {% block css %}
-<link rel="stylesheet" href="{% static 'school/css/profile.css' %}">
+<link rel="stylesheet" href="{% static 'school/css/index.css' %}">
 {% endblock %}
 
-
 {% block message %}
-<div class="message-container">
+<div class="container" id="message-container">
     {% if messages %}
     {% for message in messages %}
-    <div class="message-success">
+    <div class="my-alert-success" role="alert">
         {{ message }}
-        <span class="message-close" onclick="this.parentElement.style.display='none';">×</span>
     </div>
     {% endfor %}
     {% endif %}
 </div>
 {% endblock %}
 
-
 {% block form %}
-<form class="form" action="{% url 'auth:profile' %}" method="post">
-    {% csrf_token %}
-    <h1>Профиль</h1>
-    <label for="{{ form.first_name.id_for_label }}">Имя</label>
-    {{ form.first_name }}
-    <label for="{{ form.last_name.id_for_label }}">Фамилия</label>
-    {{ form.last_name }}
-    <label for="{{ form.username.id_for_label }}">Логин</label>
-    {{ form.username }}
-    <label for="{{ form.email.id_for_label }}">Email</label>
-    {{ form.email }}
-    <button type="submit">Сохранить</button>
-</form>
+<div class="card shadow-sm p-2 mb-3 bg-white rounded mt-5" style="max-width: 400px; margin: auto;">
+  <div class="card-body">
+    <form action="{% url 'auth:profile' %}" method="post" class="form-signin">
+        {% csrf_token %}
+        <h3 class="h3 mb-2 font-weight-normal text-center">Профиль</h3>
+        <div class="form-group">
+            <label for="{{ form.first_name.id_for_label }}">Имя</label>
+            {{ form.first_name }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.last_name.id_for_label }}">Фамилия</label>
+            {{ form.last_name }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.username.id_for_label }}">Логин</label>
+            {{ form.username }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Email</label>
+            {{ form.email }}
+        </div>
+        <div class="form-group">
+            <button class="btn btn-md btn-primary btn-block" type="submit">Сохранить</button>
+        </div>
+        <p class="text-center">
+            <a href="#" style="text-decoration: none;"> Забыли пароль?</a>
+        </p>
+    </form>
+  </div>
+</div>
 {% endblock %}
-

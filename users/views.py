@@ -14,8 +14,11 @@ def login(request):
             user = auth.authenticate(password=password, username=username)
             if user:
                 auth.login(request, user)
-                messages.success(request, 'Вы успешно авторизовались!')
                 return HttpResponseRedirect(reverse('main'))
+            else:
+                messages.error(request, '⚠️ Неверный логин или пароль. Пожалуйста, попробуйте еще раз.')
+        else:
+            messages.error(request, '⚠️ Неверный логин или пароль. Пожалуйста, попробуйте еще раз.')
     else:
         form = LoginForm()
     content = {

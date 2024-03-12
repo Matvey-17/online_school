@@ -1,11 +1,10 @@
 body {
   font-family: Arial, sans-serif;
-   background-color: #f0f0f0;
+   background-color: #ffffff;
 }
 .container {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
-    background: linear-gradient(-30deg, green, white, red);
 }
 .header {
     display: flex;
@@ -110,10 +109,7 @@ body {
 }
 .about-info p {
     text-align: justify;
-    font-size: 16px;
-}
-.about-img {
-    background-color: green;
+    font-size: 18px;
 }
 .dropdown {
   position: relative;
