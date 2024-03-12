@@ -16,9 +16,9 @@ def login(request):
                 auth.login(request, user)
                 return HttpResponseRedirect(reverse('main'))
             else:
-                messages.error(request, '⚠️ Неверный логин или пароль. Пожалуйста, попробуйте еще раз.')
+                messages.error(request, 'Неверный логин или пароль. Пожалуйста, попробуйте еще раз.')
         else:
-            messages.error(request, '⚠️ Неверный логин или пароль. Пожалуйста, попробуйте еще раз.')
+            messages.error(request, 'Неверный логин или пароль. Пожалуйста, попробуйте еще раз.')
     else:
         form = LoginForm()
     content = {

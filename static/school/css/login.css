@@ -34,14 +34,15 @@ body {
     position: fixed;
     right: 10px;
     top: 20px;
-    border-radius: 7px;
+    border-radius: 8px;
     padding: 10px;
-    background-color: #FF0000;
+    background-color: #3d2951;
     z-index: 1000;
     display: block;
-    max-height: 10%;
+    max-height: 12%;
     overflow-y: auto;
     width: 30%;
+    color: white;
 }
 
 .my-alert-success {
