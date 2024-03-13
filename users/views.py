@@ -33,7 +33,7 @@ def register(request):
         form = RegisterForm(data=request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Вы успешно зарегистрировались!')
+            messages.success(request, 'Вы успешно зарегистрировались.')
             return HttpResponseRedirect(reverse('auth:login'))
     else:
         form = RegisterForm()
@@ -49,7 +49,7 @@ def profile(request):
         form = ProfileForm(data=request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Вы успешно изменили свой профиль!')
+            messages.success(request, 'Вы успешно изменили свой профиль.')
             return HttpResponseRedirect(request.META['HTTP_REFERER'])
     else:
         form = ProfileForm(instance=request.user)
