@@ -40,11 +40,12 @@
         {% for field in form %}
         {% for error in field.errors %}
         <div>
-            {{ error }}
+            <ul style="margin: 0;">
+                <li>{{ error }}</li>
+            </ul>
         </div>
         {% endfor %}
         {% endfor %}
-
     </div>
     {% endif %}
 </div>

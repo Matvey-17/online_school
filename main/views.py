@@ -7,8 +7,8 @@ def index(request):
 
 
 def courses(request):
-    content = {'title': 'NSTU-School - Курсы'}
-    return render(request, 'main/courses.html', content)
+    content = {'title': 'NSTU-School - Каталог'}
+    return render(request, 'main/catalog.html', content)
 
 
 def about_us(request):

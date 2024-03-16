@@ -39,8 +39,7 @@ body {
     background-color: #3d2951;
     z-index: 1000;
     display: block;
-    max-height: 12%;
-    overflow-y: auto;
+    max-height: 100%;
     width: 30%;
     color: white;
 }
@@ -51,10 +50,10 @@ body {
     top: 20px;
     border-radius: 8px;
     padding: 10px;
-    background-color: #2ed22e;
+    background-color: #3d2951;
     z-index: 1000;
     display: block;
     max-height: 10%;
-    overflow-y: auto;
     width: 30%;
+    color: white;
 }
