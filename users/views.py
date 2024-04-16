@@ -63,3 +63,6 @@ def profile(request):
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect(reverse('main'))
+
+
+

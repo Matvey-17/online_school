@@ -23,11 +23,6 @@
     font-size: 1.1em !important;
 }
 
-p {
-    text-align: justify;
-    hyphens: auto;
-}
-
 .my-alert-success {
     position: fixed;
     right: 10px;

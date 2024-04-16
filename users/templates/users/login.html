@@ -13,7 +13,7 @@
             {{ form.password }}
         </div>
         <p class="text-left">
-            <a href="#" style="text-decoration: none;"> Забыли пароль?</a>
+            <a href="{% url 'auth:password_reset' %}" style="text-decoration: none;"> Забыли пароль?</a>
         </p>
         <div class="form-group">
             <button class="btn btn-lg btn-primary btn-block" type="submit">Вход в аккаунт</button>

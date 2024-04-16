@@ -19,3 +19,8 @@ def about_us(request):
 def matanaliz(request):
     content = {'title': 'NSTU-School - Матанализ'}
     return render(request, 'main/matanaliz.html', content)
+
+
+def matanaliz_tema(request):
+    content = {'title': 'Функции и графики'}
+    return render(request, 'main/matanaliz_tema.html', content)
