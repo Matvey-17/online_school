@@ -7,11 +7,13 @@ from django import forms
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
-        'placeholder': 'Логин'
+        'placeholder': 'Логин',
+        'style': 'border-radius: .5rem;'
     }))
     password = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
         'placeholder': 'Пароль',
+        'style': 'border-radius: .5rem;'
     }))
 
     class Meta:
@@ -22,27 +24,33 @@ class LoginForm(AuthenticationForm):
 class RegisterForm(UserCreationForm):
     first_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
-        'placeholder': 'Ваше имя'
+        'placeholder': 'Ваше имя',
+        'style': 'border-radius: .5rem;'
     }))
     last_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
-        'placeholder': 'Ваша фамилия'
+        'placeholder': 'Ваша фамилия',
+        'style': 'border-radius: .5rem;'
     }))
     username = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'placeholder': 'Придумайте логин',
+        'style': 'border-radius: .5rem;'
     }))
     email = forms.CharField(widget=forms.EmailInput(attrs={
         'class': 'form-control',
         'placeholder': 'Ваш e-mail',
+        'style': 'border-radius: .5rem;'
     }))
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
         'placeholder': 'Придумайте пароль',
+        'style': 'border-radius: .5rem;'
     }))
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
         'placeholder': 'Подтвердите пароль',
+        'style': 'border-radius: .5rem;'
     }))
 
     class Meta:
@@ -52,18 +60,22 @@ class RegisterForm(UserCreationForm):
 
 class ProfileForm(UserChangeForm):
     first_name = forms.CharField(required=False, widget=forms.TextInput(attrs={
-        'class': 'form-control'
+        'class': 'form-control',
+        'style': 'border-radius: .5rem;'
     }))
     last_name = forms.CharField(required=False, widget=forms.TextInput(attrs={
-        'class': 'form-control'
+        'class': 'form-control',
+        'style': 'border-radius: .5rem;'
     }))
     username = forms.CharField(widget=forms.TextInput(attrs={
         'readonly': True,
-        'class': 'readonly_input, form-control'
+        'class': 'readonly_input, form-control',
+        'style': 'border-radius: .5rem;'
     }))
     email = forms.CharField(widget=forms.EmailInput(attrs={
         'readonly': True,
-        'class': 'readonly_input, form-control'
+        'class': 'readonly_input, form-control',
+        'style': 'border-radius: .5rem;'
     }))
 
     class Meta:
@@ -78,8 +90,8 @@ class PassResetForm(PasswordResetForm):
         widget=forms.EmailInput(attrs={
             "autocomplete": "email",
             'class': 'form-control',
-            'style': 'width: 50%;',
-            'placeholder': 'Введите e-mail',
+            'style': 'width: 50%; border-radius: .5rem;',
+            'placeholder': 'Введите e-mail'
         }),
     )
 
@@ -90,7 +102,7 @@ class SetPassForm(SetPasswordForm):
         widget=forms.PasswordInput(attrs={
             "autocomplete": "new-password",
             'class': 'form-control',
-            'style': 'width: 50%;',
+            'style': 'width: 50%; border-radius: .5rem;',
             'placeholder': 'Введите новый пароль'
         }),
     )
@@ -99,7 +111,7 @@ class SetPassForm(SetPasswordForm):
         widget=forms.PasswordInput(attrs={
             "autocomplete": "new-password",
             'class': 'form-control',
-            'style': 'width: 50%;',
+            'style': 'width: 50%; border-radius: .5rem;',
             'placeholder': 'Подтвердите новый пароль'
         }),
     )

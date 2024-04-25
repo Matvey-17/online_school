@@ -8,100 +8,43 @@
     <title>{{ title }}</title>
     {% block css %}
     <link rel="stylesheet" href="{% static 'school/css/matanaliz.css' %}">
+    <script src="{% static 'school/js/add_basket.js' %}"></script>
     {% endblock %}
 </head>
 <body>
+{% block message %}
+<div class="container" id="message-container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="my-alert-success" role="alert">
+        <img width="24" height="24" src="https://img.icons8.com/color/48/ok--v1.png" alt="ok--v1"/>
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}
+
 {% block main %}
-    <div class="card mb-3">
-        <div class="row no-gutters">
-            <div class="col-md-2">
-                <img src="{% static 'school/img/function.png' %}" class="card-img" alt="function" style="width: 70%;">
-            </div>
-            <div class="col-md-10">
-                <div class="card-body">
-                    <h4 class="card-title">Функции и графики</h4>
-                    <h5 class="display-5">300 ₽/курс</h5>
-                    <a href="{% url 'courses:matanaliz_tema' %}" class="btn btn-info mr-3">Просмотр</a>
-                    <a href="#" class="btn btn-primary">В корзину</a>
-                </div>
+{% for theme in themes %}
+<div class="card mb-3 mt-2 ml-2 mr-2">
+    <div class="row no-gutters">
+        <div class="col-md-2 col-8">
+            <img src="{{ theme.photo.url }}" class="card-img" alt="{{ theme.name }}">
+        </div>
+        <div class="col-md-10">
+            <div class="card-body">
+                <h4 class="card-title">{{ theme.name }}</h4>
+                <h5 class="display-5">{{ theme.price }} ₽/курс</h5>
+                <a href="{% url 'courses:matanaliz_tema' theme.name %}" class="btn mr-3"
+                   style="border-radius: .5rem;">Подробнее</a>
+                <a href="{% url 'courses:basket_add' theme.id %}" class="btn" style="border-radius: .5rem;">В
+                    корзину</a>
             </div>
         </div>
     </div>
-    <div class="card mb-3">
-        <div class="row no-gutters">
-            <div class="col-md-2">
-                <img src="{% static 'school/img/lim.png' %}" class="card-img" alt="lim" style="width: 70%;">
-            </div>
-            <div class="col-md-10">
-                <div class="card-body">
-                    <h4 class="card-title">Пределы</h4>
-                    <h5 class="display-5">500 ₽/курс</h5>
-                    <a href="#" class="btn btn-info mr-3">Просмотр</a>
-                    <a href="#" class="btn btn-primary">В корзину</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card mb-3">
-        <div class="row no-gutters">
-            <div class="col-md-2">
-                <img src="{% static 'school/img/derivative.png' %}" class="card-img" alt="derivative" style="width: 70%;">
-            </div>
-            <div class="col-md-10">
-                <div class="card-body">
-                    <h4 class="card-title">Производные функций</h4>
-                    <h5 class="display-5">900 ₽/курс</h5>
-                    <a href="#" class="btn btn-info mr-3">Просмотр</a>
-                    <a href="#" class="btn btn-primary">В корзину</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card mb-3">
-        <div class="row no-gutters">
-            <div class="col-md-2">
-                <img src="{% static 'school/img/integral.png' %}" class="card-img" alt="integral" style="width: 70%;">
-            </div>
-            <div class="col-md-10">
-                <div class="card-body">
-                    <h4 class="card-title">Интегралы</h4>
-                    <h5 class="display-5">1000 ₽/курс</h5>
-                    <a href="#" class="btn btn-info mr-3">Просмотр</a>
-                    <a href="#" class="btn btn-primary">В корзину</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card mb-3">
-        <div class="row no-gutters">
-            <div class="col-md-2">
-                <img src="{% static 'school/img/fnp.png' %}" class="card-img" alt="fnp" style="width: 70%;">
-            </div>
-            <div class="col-md-10">
-                <div class="card-body">
-                    <h4 class="card-title">ФНП</h4>
-                    <h5 class="display-5">800 ₽/курс</h5>
-                    <a href="#" class="btn btn-info mr-3">Просмотр</a>
-                    <a href="#" class="btn btn-primary">В корзину</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card mb-3">
-        <div class="row no-gutters">
-            <div class="col-md-2">
-                <img src="{% static 'school/img/2-integral.png' %}" class="card-img" alt="2-integral" style="width: 70%;">
-            </div>
-            <div class="col-md-10">
-                <div class="card-body">
-                    <h4 class="card-title">Кратные интегралы</h4>
-                    <h5 class="display-5">1000 ₽/курс</h5>
-                    <a href="#" class="btn btn-info mr-3">Просмотр</a>
-                    <a href="#" class="btn btn-primary">В корзину</a>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
+{% endfor %}
 {% endblock %}
 </body>
 </html>
