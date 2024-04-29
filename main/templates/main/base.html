@@ -97,15 +97,6 @@
         <img src="{% static 'school/img/courses-icon.png' %}" style="width: 24px; height: 24px;">
         Курсы
     </a>
-    <a class="dropdown-item" href="{% url 'about' %}">
-        <img src="{% static 'school/img/about-icon.png' %}" style="width: 24px; height: 24px;">
-        О нас
-    </a>
-    {% else %}
-    <a class="dropdown-item" href="{% url 'about' %}">
-        <img src="{% static 'school/img/about-icon.png' %}" style="width: 24px; height: 24px;">
-        О нас
-    </a>
     {% endif %}
 </div>
 
@@ -113,5 +104,9 @@
 {% block main %} {% endblock %}
 {% block form %} {% endblock %}
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
 </body>
 </html>

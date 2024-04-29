@@ -1,0 +1,8 @@
+db.sqlite3
+media
+.env
+.venv
+main/migrations
+static/school/img
+users/migrations
+.idea

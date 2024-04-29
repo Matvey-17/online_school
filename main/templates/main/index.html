@@ -4,6 +4,7 @@
 
 {% block css %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
 <link rel="stylesheet" href="{% static 'school/css/index.css' %}">
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -16,7 +17,7 @@
 <div class="container">
     <img src="{% static 'school/img/banner.png' %}" class="img-fluid mt-4">
     <div class="row mt-4">
-        <div class="col-md-6">
+        <div class="col-md-6" data-aos="fade-right" data-aos-duration="1000">
             <h2>Добро пожаловать в NSTU-School</h2>
             <p><strong>NSTU-School</strong> - это онлайн-платформа для обучения высшей математики. На нашем сайте вы
                 найдете качественные
@@ -51,7 +52,7 @@
                 </li>
             </ul>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" data-aos="fade-left" data-aos-duration="1000">
             <h2>Популярные курсы</h2>
             <img src="{% static 'school/img/matanaliz.png' %}" alt="Матанализ" class="img-fluid"
                  style="border-radius: .5rem;">

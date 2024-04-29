@@ -1,17 +1,22 @@
+import uuid
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from users.forms import LoginForm, RegisterForm, ProfileForm
 from django.contrib import auth, messages
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
-from main.models import Baskets
+from main.models import Baskets, OrderItem, Order
 from django.core.mail import send_mail
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.contrib.auth.tokens import default_token_generator
+from yookassa import Configuration, Payment
+from django.views.decorators.csrf import csrf_exempt
+import json
+from django.db import transaction
 
 
 def login(request):
@@ -110,6 +115,49 @@ def basket(request):
         'total_sum': total_sum
     }
     return render(request, 'users/basket.html', content)
+
+
+@login_required()
+def payment_view(request, total_sum):
+    Configuration.account_id = '378433'
+    Configuration.secret_key = 'test_npG4-Hpf75jorGZ1bTiXuc51QbLTUdZAHsgktVKRZUc'
+
+    payment = Payment.create({
+        "amount": {
+            "value": f"{total_sum}",
+            "currency": "RUB"
+        },
+        "confirmation": {
+            "type": "redirect",
+            "return_url": "http://127.0.0.1:8000/"
+        },
+        "capture": True,
+        "description": "Тестовый платеж",
+    }, uuid.uuid4())
+
+    payment_url = payment.confirmation.confirmation_url
+
+    order = Order(user=request.user, id_order=payment.id, summa=total_sum)
+    order.save()
+
+    return HttpResponseRedirect(payment_url)
+
+
+@csrf_exempt
+def message(request):
+    event = json.loads(request.body)
+    if event['object']['status'] == 'succeeded':
+        with transaction.atomic():
+            order = Order.objects.get(id_order=event['object']['id'])
+            order.status_paid = True
+            order.save()
+
+            baskets = Baskets.objects.filter(user=order.user)
+            if baskets.exists():
+                for bask in baskets:
+                    order_item = OrderItem(order=order, item=bask.theme)
+                    order_item.save()
+    return HttpResponse(200)
 
 
 @login_required()

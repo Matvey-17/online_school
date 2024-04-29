@@ -15,11 +15,6 @@ def courses(request):
     return render(request, 'main/catalog.html', content)
 
 
-def about_us(request):
-    content = {'title': 'NSTU-School - О нас'}
-    return render(request, 'main/about.html', content)
-
-
 @login_required()
 def matanaliz(request):
     themes = Themes.objects.all()

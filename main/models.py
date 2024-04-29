@@ -67,3 +67,29 @@ class Baskets(models.Model):
 
     def sum(self):
         return self.quantity * self.theme.price
+
+
+class Order(models.Model):
+    id_order = models.CharField(max_length=1024, verbose_name='ID заказа')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
+    summa = models.DecimalField(max_digits=6, decimal_places=0, verbose_name='Сумма заказа')
+    status_paid = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = 'Заказы'
+        verbose_name_plural = 'Заказы'
+
+    def __str__(self):
+        return f'Заказ {self.id_order} | Пользователь: {self.user.email}'
+
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, verbose_name='Заказ')
+    item = models.ForeignKey(Themes, on_delete=models.CASCADE, verbose_name='Товар')
+
+    class Meta:
+        verbose_name = 'Товары к заказу'
+        verbose_name_plural = 'Товары к заказу'
+
+    def __str__(self):
+        return f'Товар: {self.item} | К заказу {self.order.id_order}'

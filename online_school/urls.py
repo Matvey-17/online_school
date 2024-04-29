@@ -19,13 +19,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from main.views import index, about_us
+from main.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='main'),
     path('courses/', include('main.urls', namespace='courses')),
-    path('about/', about_us, name='about'),
     path('auth/', include('users.urls', namespace='auth')),
 
 ]

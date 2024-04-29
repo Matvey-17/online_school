@@ -1,5 +1,5 @@
 from users.forms import PassResetForm, SetPassForm
-from users.views import login, register, profile, logout, basket, activate
+from users.views import login, register, profile, logout, basket, activate, payment_view, message
 from django.urls import path, reverse_lazy
 from django.contrib.auth import views as auth_views
 
@@ -29,5 +29,7 @@ urlpatterns = [
     path('password-reset-complete/',
          auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'),
          name='password_reset_complete'),
-    path('activate/<uidb64>/<token>/', activate, name='activate')
+    path('activate/<uidb64>/<token>/', activate, name='activate'),
+    path('payment/<int:total_sum>/', payment_view, name='payment'),
+    path('messages/', message, name='messages')
 ]
