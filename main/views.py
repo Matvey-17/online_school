@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.shortcuts import render, HttpResponseRedirect
-from main.models import Themes, Subtopics, Baskets
+from main.models import Themes, Subtopics, Baskets, Order, OrderItem, Items
 from django.contrib import messages
 
 
@@ -53,3 +54,28 @@ def basket_remove(request, basket_id):
     basket = Baskets.objects.get(id=basket_id)
     basket.delete()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
+@login_required()
+def available_courses(request, theme_name=None):
+    themes_menu = Items.objects.all().prefetch_related('themes')
+    theme_menu = None
+
+    subtopics_list = []
+    orders = Order.objects.filter(user=request.user, status_paid=True)
+    themes = OrderItem.objects.filter(order__in=orders)
+    for theme in themes:
+        if theme_name:
+            subtopics = Subtopics.objects.filter(Q(name_themes=theme.item) & Q(name_themes__name=theme_name))
+            subtopics_list.extend(subtopics)
+            theme_menu = theme_name
+        else:
+            subtopics = Subtopics.objects.filter(name_themes=theme.item)
+            subtopics_list.extend(subtopics)
+    content = {
+        'title': 'NSTU-School | Доступные курсы',
+        'subtopics': subtopics_list,
+        'themes_menu': themes_menu,
+        'theme_menu': theme_menu
+    }
+    return render(request, 'main/available_courses.html', content)

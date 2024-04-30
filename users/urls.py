@@ -30,6 +30,6 @@ urlpatterns = [
          auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'),
          name='password_reset_complete'),
     path('activate/<uidb64>/<token>/', activate, name='activate'),
-    path('payment/<int:total_sum>/', payment_view, name='payment'),
+    path('payment/', payment_view, name='payment'),
     path('messages/', message, name='messages')
 ]

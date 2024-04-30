@@ -11,7 +11,7 @@ $(document).ready(function() {
         } else {
             description.hide();
             title.show();
-            $(this).text('Просмотр');
+            $(this).text('Описание');
         }
     });
 });

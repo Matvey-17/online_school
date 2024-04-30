@@ -17,6 +17,10 @@ from yookassa import Configuration, Payment
 from django.views.decorators.csrf import csrf_exempt
 import json
 from django.db import transaction
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def login(request):
@@ -118,9 +122,14 @@ def basket(request):
 
 
 @login_required()
-def payment_view(request, total_sum):
-    Configuration.account_id = '378433'
-    Configuration.secret_key = 'test_npG4-Hpf75jorGZ1bTiXuc51QbLTUdZAHsgktVKRZUc'
+def payment_view(request):
+    Configuration.account_id = os.getenv('ACCOUNT_ID')
+    Configuration.secret_key = os.getenv('SECRET_KEY_PAYMENT')
+
+    baskets = Baskets.objects.filter(user=request.user)
+    total_sum = 0
+    for bask in baskets:
+        total_sum += bask.sum()
 
     payment = Payment.create({
         "amount": {
@@ -157,6 +166,7 @@ def message(request):
                 for bask in baskets:
                     order_item = OrderItem(order=order, item=bask.theme)
                     order_item.save()
+                baskets.delete()
     return HttpResponse(200)
 
 

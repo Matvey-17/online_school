@@ -17,7 +17,7 @@ class Themes(models.Model):
     name = models.CharField(max_length=512, verbose_name='Название')
     photo = models.ImageField(verbose_name='Фотография')
     price = models.DecimalField(max_digits=6, decimal_places=0, verbose_name='Цена')
-    name_items = models.ForeignKey(Items, on_delete=models.CASCADE, verbose_name='Предмет')
+    name_items = models.ForeignKey(Items, on_delete=models.CASCADE, verbose_name='Предмет', related_name='themes')
 
     class Meta:
         verbose_name = 'Темы'

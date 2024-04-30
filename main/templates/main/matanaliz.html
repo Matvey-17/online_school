@@ -1,17 +1,11 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'school/css/matanaliz.css' %}">
+<script src="{% static 'school/js/add_basket.js' %}"></script>
+{% endblock %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ title }}</title>
-    {% block css %}
-    <link rel="stylesheet" href="{% static 'school/css/matanaliz.css' %}">
-    <script src="{% static 'school/js/add_basket.js' %}"></script>
-    {% endblock %}
-</head>
-<body>
 {% block message %}
 <div class="container" id="message-container">
     {% if messages %}
@@ -46,5 +40,3 @@
 </div>
 {% endfor %}
 {% endblock %}
-</body>
-</html>
