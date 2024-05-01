@@ -1,6 +1,6 @@
 setTimeout(function() {
         document.getElementById('message-container').style.display = 'none';
-    }, 8000);
+    }, 4000);
 
 
 function openNav() {

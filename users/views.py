@@ -58,12 +58,13 @@ def register(request):
             current_site = get_current_site(request)
             mail_subject = 'Активируйте свой аккаунт'
             message = render_to_string('users/acc_active_email.html', {
-                'user': user,
+                'user': user.username,
                 'domain': current_site.domain,
                 'uid': uid,
                 'token': token,
+                'protocol': 'http'
             })
-            send_mail(mail_subject, message, 'mywebsite@mywebsite.com', [user.email])
+            send_mail(mail_subject, message, 'Moty017@yandex.ru', [user.email])
             content = {'title': 'NSTU-School - Подтверждение пароля'}
             return render(request, 'users/email_active.html', content)
     else:
