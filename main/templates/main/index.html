@@ -3,13 +3,8 @@
 
 
 {% block css %}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
 <link rel="stylesheet" href="{% static 'school/css/index.css' %}">
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
 {% endblock %}
 
 
@@ -33,19 +28,19 @@
             <p>Вот несколько причин, по которым вы должны выбрать нашу платформу для обучения:</p>
             <ul class="list-unstyled">
                 <li class="media mb-3">
-                    <img src="{% static 'school/img/quality.png' %}" alt="Качество" class="mr-3 small-icon">
+                    <img src="{% static 'school/img/quality.png' %}" loading="lazy" alt="Качество" class="mr-3 small-icon">
                     <div class="media-body">
                         <span>Высокое качество материалов, проверенных и одобренных нашими профессорами</span>
                     </div>
                 </li>
                 <li class="media mb-3">
-                    <img src="{% static 'school/img/flexibility.png' %}" alt="Гибкость" class="mr-3 small-icon">
+                    <img src="{% static 'school/img/flexibility.png' %}" loading="lazy" alt="Гибкость" class="mr-3 small-icon">
                     <div class="media-body">
                         <span>Гибкий график обучения, который вы можете адаптировать под свой ритм и свободное время</span>
                     </div>
                 </li>
                 <li class="media mb-3">
-                    <img src="{% static 'school/img/support.png' %}" alt="Поддержка" class="mr-3 small-icon">
+                    <img src="{% static 'school/img/support.png' %}" loading="lazy" alt="Поддержка" class="mr-3 small-icon">
                     <div class="media-body">
                         <span>Постоянная поддержка и обратная связь от наших студентов-наставников, которые помогут вам с любыми вопросами и трудностями</span>
                     </div>

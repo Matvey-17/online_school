@@ -87,11 +87,6 @@ body {
   height: 24px;
 }
 
-.openbtn:hover {
-  background-color: #f0f0f0;
-  border-radius: 18px;
-}
-
 #main {
   transition: margin-left .5s;
   padding: 16px;

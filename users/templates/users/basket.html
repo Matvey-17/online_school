@@ -6,6 +6,19 @@
 <link rel="stylesheet" href="{% static 'school/css/index.css' %}">
 {% endblock %}
 
+{% block message %}
+<div class="container" id="message-container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="my-alert-success" role="alert">
+        <img width="24" height="24" src="{% static 'school/img/ok--v1.png' %}" alt="ok--v1"/>
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}
+
 {% block main %}
 <div class="container">
     <div class="row">
@@ -19,16 +32,16 @@
                         <span style="font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ basket.theme.name_items.name }}</span>
                     </div>
                     <div class="row">
-                        <div class="col-md-2 mt-4 col-6">
+                        <div class="col-md-2 mt-4 col-5">
                             <img src="{{ basket.theme.photo.url }}" class="img-fluid" alt="{{ basket.theme.name }}">
                         </div>
                         <div class="col-md-5 text-center mt-5 mr-5 col-6">
-                            <h4><a href="{% url 'courses:matanaliz_tema' basket.theme.name %}"
-                                   style="text-decoration:none; color: black;">{{ basket.theme.name }}</a></h4>
+                            <h5><a href="{% url 'courses:matanaliz_tema' basket.theme.name %}"
+                                   style="text-decoration:none; color: black;">{{ basket.theme.name }}</a></h5>
                         </div>
                         <div class="col-md-3 text-end mt-5 col-4">
                             <h4>{{ basket.sum }} ₽</h4>
-                            <a href="{% url 'courses:basket_remove' basket.id %}">
+                            <a href="{% url 'courses:basket_remove' basket.id %}" class="basket-remove">
                                 <img src="{% static 'school/img/delete-icon.png' %}"
                                      style="width: 30x; height: 30px; margin-top: 30px;">
                             </a>
@@ -100,11 +113,14 @@
                         </div>
                     </div>
                     <div class="col-11 text-center mt-3">
-                        <a href="{% url 'auth:payment' %}" class="btn" style="border-radius: .5rem;">Перейти к оплате</a>
+                        <a href="{% url 'auth:payment' %}" class="btn" style="border-radius: .5rem;">Перейти к
+                            оплате</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script defer src="{% static 'school/js/add_basket.js' %}"></script>
+<script defer src="{% static 'school/js/basket_delete.js' %}"></script>
 {% endblock %}

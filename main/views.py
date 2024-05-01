@@ -1,8 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, redirect
 from main.models import Themes, Subtopics, Baskets, Order, OrderItem, Items
 from django.contrib import messages
+from django.http import JsonResponse
 
 
 def index(request):
@@ -46,14 +47,17 @@ def basket_add(request, product_id):
         basket.quantity += 1
         basket.save()
     messages.success(request, 'Товар добавлен в корзину.')
-    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+    return redirect('auth:basket')
 
 
 @login_required()
 def basket_remove(request, basket_id):
-    basket = Baskets.objects.get(id=basket_id)
-    basket.delete()
-    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+    if request.method == 'GET' and request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        basket = Baskets.objects.get(id=basket_id)
+        basket.delete()
+        return JsonResponse({"success": True})
+    else:
+        return JsonResponse({"success": False})
 
 
 @login_required()

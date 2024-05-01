@@ -3,27 +3,13 @@
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'school/css/matanaliz.css' %}">
-<script src="{% static 'school/js/add_basket.js' %}"></script>
-{% endblock %}
-
-{% block message %}
-<div class="container" id="message-container">
-    {% if messages %}
-    {% for message in messages %}
-    <div class="my-alert-success" role="alert">
-        <img width="24" height="24" src="https://img.icons8.com/color/48/ok--v1.png" alt="ok--v1"/>
-        {{ message }}
-    </div>
-    {% endfor %}
-    {% endif %}
-</div>
 {% endblock %}
 
 {% block main %}
 {% for theme in themes %}
 <div class="card mb-3 mt-2 ml-2 mr-2">
     <div class="row no-gutters">
-        <div class="col-md-2 col-8">
+        <div class="col-md-2 col-4">
             <img src="{{ theme.photo.url }}" class="card-img" alt="{{ theme.name }}">
         </div>
         <div class="col-md-10">

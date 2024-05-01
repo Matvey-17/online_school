@@ -11,11 +11,11 @@
 
     <link rel="shortcut icon" href="{% static 'school/img/logo3.png' %}"/>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static 'school/js/index.js' %}"></script>
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="{% static 'school/js/index.js' %}"></script>
 
     <title>{{ title }}</title>
 
@@ -50,16 +50,16 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="border-radius:15px;">
                     <li><a class="dropdown-item" href="{% url 'auth:profile' %}">
-                        <img src="{% static 'school/img/user-icon.png' %}" style="width: 24px; height: 24px;">
+                        <img src="{% static 'school/img/user-icon.png' %}" loading="lazy" style="width: 24px; height: 24px;">
                         Профиль
                     </a></li>
                     <li><a class="dropdown-item" href="{% url 'auth:basket' %}">
-                        <img src="{% static 'school/img/basket-icon.png' %}" style="width: 24px; height: 24px;">
+                        <img src="{% static 'school/img/basket-icon.png' %}" loading="lazy" style="width: 24px; height: 24px;">
                         Корзина
                     </a></li>
                     {% if user.is_staff or user.is_superuser %}
                     <li><a class="dropdown-item" href="{% url 'admin:index' %}">
-                        <img src="{% static 'school/img/admin-icon.png' %}" style="width: 24px; height: 24px;">
+                        <img src="{% static 'school/img/admin-icon.png' %}" loading="lazy" style="width: 24px; height: 24px;">
                         Админ
                     </a></li>
                     {% endif %}
@@ -68,7 +68,6 @@
                         <img src="{% static 'school/img/login-icon.png' %}" style="width: 24px; height: 24px;">
                         Выйти
                     </a></li>
-                    </hr>
                 </ul>
             </li>
             {% else %}
@@ -90,11 +89,11 @@
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="text-decoration: none;">×</a>
     {% if user.is_authenticated %}
     <a class="dropdown-item" href="{% url 'courses:index' %}">
-        <img src="{% static 'school/img/catalog-icon.png' %}" style="width: 24px; height: 24px;">
+        <img src="{% static 'school/img/catalog-icon.png' %}" loading="lazy" style="width: 24px; height: 24px;">
         Магазин
     </a>
     <a class="dropdown-item" href="{% url 'courses:available_courses' %}">
-        <img src="{% static 'school/img/courses-icon.png' %}" style="width: 24px; height: 24px;">
+        <img src="{% static 'school/img/courses-icon.png' %}" loading="lazy" style="width: 24px; height: 24px;">
         Курсы
     </a>
     {% endif %}
