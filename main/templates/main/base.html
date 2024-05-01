@@ -24,9 +24,11 @@
 <body style="background-color: #f2f5fa;">
 
 <nav class="navbar navbar-expand-lg navbar-light">
+    {% if user.is_authenticated %}
     <div id="main">
         <img src="{% static 'school/img/burger-icon.png' %}" class="openbtn" onclick="openNav()">
     </div>
+    {% endif %}
     <a class="navbar-brand" href="{% url 'main' %}">
         <img src="{% static 'school/img/logo3.png' %}" alt="NSTU-School">
         <b>NSTU-School</b>
@@ -84,10 +86,9 @@
     </div>
 </nav>
 
-
+{% if user.is_authenticated %}
 <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="text-decoration: none;">×</a>
-    {% if user.is_authenticated %}
     <a class="dropdown-item" href="{% url 'courses:index' %}">
         <img src="{% static 'school/img/catalog-icon.png' %}" loading="lazy" style="width: 24px; height: 24px;">
         Магазин
@@ -96,8 +97,8 @@
         <img src="{% static 'school/img/courses-icon.png' %}" loading="lazy" style="width: 24px; height: 24px;">
         Курсы
     </a>
-    {% endif %}
 </div>
+{% endif %}
 
 {% block message %}{% endblock %}
 {% block main %} {% endblock %}
