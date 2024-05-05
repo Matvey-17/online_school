@@ -59,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'online_school.middleware.SecretAdminAccessMiddleware'
 ]
 
 ROOT_URLCONF = 'online_school.urls'

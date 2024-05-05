@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block main %}
-<div class="container mt-5">
+<div class="container mt-5" id="coursesContainer">
     <h3 class="mb-4">Доступные курсы</h3>
     <div class="dropdown">
         <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
@@ -24,10 +24,10 @@
             <h6 class="text-center mt-1">{{ theme_menu.name }}</h6>
             <hr>
             {% if forloop.first %}
-            <a class="btn-success dropdown-item" href="{% url 'courses:available_courses' %}">Все темы</a>
+            <a class="dropdown-item" href="{% url 'courses:available_courses' %}">Все темы</a>
             {% endif %}
             {% for menu in theme_menu.themes.all %}
-            <a class="btn-success dropdown-item" href="{% url 'courses:available_courses_filter' menu.name %}">{{ menu.name }}</a>
+            <a class="dropdown-item" href="{% url 'courses:available_courses_filter' menu.name %}">{{ menu.name }}</a>
             {% endfor %}
             {% if not forloop.last %}
             <hr>
@@ -51,6 +51,15 @@
         </div>
     </div>
     {% endfor %}
+    {% if theme_menu %}
+    <div class="mt-2 ml-2 mb-4" id="divBtn" data-url="{% url 'courses:available_courses_filter' theme_menu %}">
+    <a href="{% url 'courses:available_courses_filter' theme_menu %}" id="loadMore" class="btn" style="border-radius: .5rem;">Показать еще</a>
+    </div>
+    {% else %}
+    <div class="mt-2 ml-2 mb-4" id="divBtn" data-url="{% url 'courses:available_courses' %}">
+    <a href="{% url 'courses:available_courses' %}" id="loadMore" class="btn" style="border-radius: .5rem;">Показать еще</a>
+    </div>
+    {% endif %}
     {% else %}
     <div class="text-center">
     <svg xmlns="http://www.w3.org/2000/svg" width="170" height="160" viewBox="0 0 170 160" fill="none">
@@ -222,6 +231,7 @@
     </div>
     {% endif %}
 </div>
+<script defer src="{% static 'school/js/available_courses.js' %}"></script>
 {% endblock %}
 
 

@@ -1,9 +1,11 @@
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.db.models import Q
-from django.shortcuts import render, HttpResponseRedirect, redirect
+from django.shortcuts import render, redirect
 from main.models import Themes, Subtopics, Baskets, Order, OrderItem, Items
 from django.contrib import messages
 from django.http import JsonResponse
+from main.serializers_views import SubtopicsSerializer
 
 
 def index(request):
@@ -62,6 +64,10 @@ def basket_remove(request, basket_id):
 
 @login_required()
 def available_courses(request, theme_name=None):
+    page = request.GET.get('page', 1)
+    page = int(page)
+    per_page = 5
+
     themes_menu = Items.objects.all().prefetch_related('themes')
     theme_menu = None
 
@@ -76,10 +82,17 @@ def available_courses(request, theme_name=None):
         else:
             subtopics = Subtopics.objects.filter(name_themes=theme.item)
             subtopics_list.extend(subtopics)
-    content = {
-        'title': 'NSTU-School | Доступные курсы',
-        'subtopics': subtopics_list,
-        'themes_menu': themes_menu,
-        'theme_menu': theme_menu
-    }
-    return render(request, 'main/available_courses.html', content)
+    paginator = Paginator(subtopics_list, per_page)
+    subtopics = paginator.get_page(page)
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        subtopics_serializer = SubtopicsSerializer(subtopics, many=True)
+        data = subtopics_serializer.data
+        return JsonResponse(data, safe=False)
+    else:
+        content = {
+            'title': 'NSTU-School | Доступные курсы',
+            'subtopics': subtopics,
+            'themes_menu': themes_menu,
+            'theme_menu': theme_menu
+        }
+        return render(request, 'main/available_courses.html', content)
