@@ -17,7 +17,7 @@
                 <h4 class="card-title">{{ theme.name }}</h4>
                 <h5 class="display-5">{{ theme.price }} ₽/курс</h5>
                 <a href="{% url 'courses:matanaliz_tema' theme.name %}" class="btn btn-primary mr-3"
-                   style="border-radius: .5rem; background-color: #b2ccff; color: blue;">Подробнее</a>
+                   style="border-radius: .5rem; background-color: #b2ccff; color: blue; border-color: #b2ccff;">Подробнее</a>
                 <a href="{% url 'courses:basket_add' theme.id %}" class="btn" style="border-radius: .5rem;">В
                     корзину</a>
             </div>

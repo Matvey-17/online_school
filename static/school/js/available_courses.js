@@ -19,9 +19,11 @@ $(document).ready(function() {
                     let col = $('<div>').addClass('col-md-8').appendTo(row);
                     let card = $('<div>').addClass('card').css('border-radius', '.75rem').appendTo(col);
                     let card_body = $('<div>').addClass('card-body').appendTo(card);
+                    let card_desc = $('<div>').addClass('card col-md-4 col-7 mb-3').css({'border-radius': '.20rem', 'margin-left': '-10px', 'background-color': '#c8f288'}).appendTo(card_body);
+                    $('<span>').css('font-size', '11px').text(course.name_themes.name_items.name).appendTo(card_desc);
                     $('<h5>').addClass('card-title').text(course.name_themes.name).appendTo(card_body);
                     $('<p>').addClass('card-text').text(course.name).appendTo(card_body);
-                    $('<a>').attr('href', '#').addClass('btn btn-primary mr-3').css({'border-radius': '.5rem', 'background-color': '#61ffb3', 'color': 'black', 'border-color': 'red'}).text('Конспект').appendTo(card_body);
+                    $('<a>').attr('href', '#').addClass('btn btn-primary mr-3').css({'border-radius': '.5rem', 'background-color': '#d2f1d9', 'color': 'black', 'border-color': '#dedce3'}).text('Конспект').appendTo(card_body);
                     $('<a>').attr('href', '#').addClass('btn').css('border-radius', '.5rem').text('Вебинар').appendTo(card_body);
                 });
                 $('#loadMore').remove();

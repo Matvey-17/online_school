@@ -174,4 +174,4 @@ def message(request):
 @login_required()
 def logout(request):
     auth.logout(request)
-    return HttpResponseRedirect(reverse('main'))
+    return HttpResponseRedirect(reverse('auth:login'))
