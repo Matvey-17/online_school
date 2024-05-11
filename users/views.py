@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from users.forms import LoginForm, RegisterForm, ProfileForm
 from django.contrib import auth, messages
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.urls import reverse
 from main.models import Baskets, OrderItem, Order
 from django.core.mail import send_mail
@@ -40,7 +40,7 @@ def login(request):
     else:
         form = LoginForm()
     content = {
-        'title': 'NSTU-School - Вход',
+        'title': 'Академия NETI | Вход',
         'form': form
     }
     return render(request, 'users/login.html', content)
@@ -65,12 +65,12 @@ def register(request):
                 'protocol': 'http'
             })
             send_mail(mail_subject, message, 'Moty017@yandex.ru', [user.email])
-            content = {'title': 'NSTU-School - Подтверждение пароля'}
+            content = {'title': 'Академия NETI | Подтверждение пароля'}
             return render(request, 'users/email_active.html', content)
     else:
         form = RegisterForm()
     content = {
-        'title': 'NSTU-School - Регистрация',
+        'title': 'Академия NETI | Регистрация',
         'form': form
     }
     return render(request, 'users/registration.html', content)
@@ -102,7 +102,7 @@ def profile(request):
     else:
         form = ProfileForm(instance=request.user)
     content = {
-        'title': 'NSTU-School - Профиль',
+        'title': 'Академия NETI | Профиль',
         'form': form
     }
     return render(request, 'users/profile.html', content)
@@ -115,7 +115,7 @@ def basket(request):
     for bask in baskets:
         total_sum += bask.sum()
     content = {
-        'title': 'NSTU-School - Корзина',
+        'title': 'Академия NETI | Корзина',
         'baskets': baskets,
         'total_sum': total_sum
     }
@@ -132,25 +132,28 @@ def payment_view(request):
     for bask in baskets:
         total_sum += bask.sum()
 
-    payment = Payment.create({
-        "amount": {
-            "value": f"{total_sum}",
-            "currency": "RUB"
-        },
-        "confirmation": {
-            "type": "redirect",
-            "return_url": "http://127.0.0.1:8000/"
-        },
-        "capture": True,
-        "description": "Тестовый платеж",
-    }, uuid.uuid4())
+    if total_sum != 0:
+        payment = Payment.create({
+            "amount": {
+                "value": f"{total_sum}",
+                "currency": "RUB"
+            },
+            "confirmation": {
+                "type": "redirect",
+                "return_url": "http://127.0.0.1:8000/"
+            },
+            "capture": True,
+            "description": "Тестовый платеж",
+        }, uuid.uuid4())
 
-    payment_url = payment.confirmation.confirmation_url
+        payment_url = payment.confirmation.confirmation_url
 
-    order = Order(user=request.user, id_order=payment.id, summa=total_sum)
-    order.save()
+        order = Order(user=request.user, id_order=payment.id, summa=total_sum)
+        order.save()
 
-    return HttpResponseRedirect(payment_url)
+        return HttpResponseRedirect(payment_url)
+
+    raise Http404('Нет выбранных товаров в корзине')
 
 
 @csrf_exempt

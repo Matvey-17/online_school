@@ -9,20 +9,20 @@ from main.serializers_views import SubtopicsSerializer
 
 
 def index(request):
-    content = {'title': 'NSTU-School - Учись с умом'}
+    content = {'title': 'Академия NETI'}
     return render(request, 'main/index.html', content)
 
 
 @login_required()
 def courses(request):
-    content = {'title': 'NSTU-School - Каталог'}
+    content = {'title': 'Академия NETI | Каталог'}
     return render(request, 'main/catalog.html', content)
 
 
 @login_required()
 def matanaliz(request):
     themes = Themes.objects.all()
-    content = {'title': 'NSTU-School - Матанализ', 'themes': themes}
+    content = {'title': 'Академия NETI | Матанализ', 'themes': themes}
     return render(request, 'main/matanaliz.html', content)
 
 
@@ -90,7 +90,7 @@ def available_courses(request, theme_name=None):
         return JsonResponse(data, safe=False)
     else:
         content = {
-            'title': 'NSTU-School | Доступные курсы',
+            'title': 'Академия NETI | Доступные курсы',
             'subtopics': subtopics,
             'themes_menu': themes_menu,
             'theme_menu': theme_menu

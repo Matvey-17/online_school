@@ -6,7 +6,7 @@ $(document).ready(function() {
         e.preventDefault();
         page++;
         $.ajax({
-            url: url,  // Замените на URL вашего маршрута
+            url: url,
             type: 'get',
             data: {
                 page: page
@@ -14,7 +14,6 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(data) {
                 $.each(data, function(index, course) {
-                    // Создание новой карточки и добавление ее на страницу
                     let row = $('<div>').addClass('row mt-4').appendTo('#coursesContainer');
                     let col = $('<div>').addClass('col-md-8').appendTo(row);
                     let card = $('<div>').addClass('card').css('border-radius', '.75rem').appendTo(col);
@@ -31,8 +30,7 @@ $(document).ready(function() {
                 let btn = $('<div>').attr('id', 'divBtn').addClass('mt-2 ml-2 mb-4').appendTo('#coursesContainer')
                 $('<a>').attr({'href': url, 'id': 'loadMore'}).addClass('btn').css('border-radius', '.5rem').text('Показать еще').appendTo(btn);
                 if (data.length < 5) {
-                    // Если мы получили менее 5 курсов, значит, это были последние курсы
-                    $('#loadMore').fadeOut('slow');
+                    $('#loadMore').remove();
                 }
             }
         });
